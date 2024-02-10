@@ -1,0 +1,67 @@
+[gd_scene load_steps=12 format=3 uid="uid://bq7v42wslmmc3"]
+
+[ext_resource type="Script" path="res://Sun.gd" id="1_wf4qo"]
+[ext_resource type="Script" path="res://Rotate.gd" id="2_0pxy2"]
+[ext_resource type="Script" path="res://neptune.gd" id="2_dp387"]
+[ext_resource type="Script" path="res://NepMoon.gd" id="4_picqw"]
+[ext_resource type="Script" path="res://Mars.gd" id="5_gkrba"]
+[ext_resource type="Script" path="res://MarMoon.gd" id="6_pdxbf"]
+[ext_resource type="Script" path="res://Pluto.gd" id="7_wu0d3"]
+[ext_resource type="Script" path="res://Venus.gd" id="8_63lyj"]
+[ext_resource type="Script" path="res://Saturn 'Rings'.gd" id="9_h32hh"]
+[ext_resource type="Script" path="res://Saturn.gd" id="10_bkg6q"]
+[ext_resource type="Texture2D" uid="uid://csenntg7s2dhj" path="res://ultra-detailed-nebula-abstract-wallpaper-4.jpg" id="11_2ee2l"]
+
+[node name="Sun" type="Node2D"]
+position = Vector2(575, 325)
+script = ExtResource("1_wf4qo")
+
+[node name="Sun Rotate" type="Node2D" parent="."]
+script = ExtResource("2_0pxy2")
+rotation_speed = 0.03
+
+[node name="Neptune" type="Node2D" parent="Sun Rotate"]
+position = Vector2(-66, 140)
+script = ExtResource("2_dp387")
+
+[node name="Neptune Rotate" type="Node2D" parent="Sun Rotate/Neptune"]
+script = ExtResource("2_0pxy2")
+rotation_speed = 0.06
+
+[node name="NepMoon" type="Node2D" parent="Sun Rotate/Neptune/Neptune Rotate"]
+script = ExtResource("4_picqw")
+
+[node name="Mars" type="Node2D" parent="Sun Rotate"]
+position = Vector2(239, -57)
+script = ExtResource("5_gkrba")
+
+[node name="Mars Rotate" type="Node2D" parent="Sun Rotate/Mars"]
+position = Vector2(1, 5)
+script = ExtResource("2_0pxy2")
+rotation_speed = 0.06
+
+[node name="MarMoon" type="Node2D" parent="Sun Rotate/Mars/Mars Rotate"]
+position = Vector2(43, -2)
+script = ExtResource("6_pdxbf")
+
+[node name="Pluto" type="Node2D" parent="Sun Rotate"]
+position = Vector2(0, -265)
+script = ExtResource("7_wu0d3")
+
+[node name="Venus" type="Node2D" parent="Sun Rotate"]
+position = Vector2(-1, 71)
+script = ExtResource("8_63lyj")
+
+[node name="Saturn \'Rings\'" type="Node2D" parent="Sun Rotate"]
+modulate = Color(1, 1, 1, 0.34902)
+position = Vector2(-343, -12)
+script = ExtResource("9_h32hh")
+
+[node name="Saturn" type="Node2D" parent="Sun Rotate/Saturn \'Rings\'"]
+modulate = Color(1, 1, 1, 0.403922)
+script = ExtResource("10_bkg6q")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
+texture = ExtResource("11_2ee2l")
